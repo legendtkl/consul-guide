@@ -4,6 +4,16 @@
 	"language": "en",
 	"plugins": [
 		"toggle-chapters",
-		"splitter"
-	]
+		"splitter",
+        "prism", 
+        "-highlight",
+        "emphasize"
+	],
+    "pluginsConfig": {
+        "prism": {
+            "css": [
+                "prismjs/themes/prism-okaidia.css"
+            ]
+        }
+    }
 }

@@ -1,6 +1,6 @@
 # Summary
 
-* [引言](README.md)
+* [Consul 指南](README.md)
 * [1. Documentation Home](document/README.md)
     * [1.1 What is consul](document/whatisconsul.md)
     * [1.2 Consul vs. Other Software](document/comparison.md)

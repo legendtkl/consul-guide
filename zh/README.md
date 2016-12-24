@@ -1,3 +1,13 @@
-# My Awesome Book
+# consul 指南
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
+## 引言
+consul 致力于为服务治理提供一整套的解决方案，这俩年在国内开始逐渐流行起来，可以说 consul 的流行主要有两个原因：
+1. 微服务的兴起。微服务的兴起使得服务治理越来越重要。
+2. DevOps 理念得到越来越多的人的认可。
+
+关于 consul，遗憾的是中文资料非常少，所以就有了这本 gitbook。此书的内容始于官方文档，而不止于官方文档。我们的目的并不是翻译，而是要通过这本书让大家能够更好地理解和使用 consul.
+
+## 鸣谢
+感谢项目的发起人：陶克路、杨龙、王斌，和他们的付出。
+
+感谢所有 contributor。
