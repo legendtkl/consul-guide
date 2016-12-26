@@ -1,0 +1,19 @@
+{
+	"title": "consul guide and inside",
+	"description": "consul is an awesome sofeware for service discovery",
+	"language": "en",
+	"plugins": [
+		"toggle-chapters",
+		"splitter",
+        "prism", 
+        "-highlight",
+        "emphasize"
+	],
+    "pluginsConfig": {
+        "prism": {
+            "css": [
+                "prismjs/themes/prism-okaidia.css"
+            ]
+        }
+    }
+}
