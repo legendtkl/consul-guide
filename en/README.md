@@ -6,8 +6,7 @@ From Consul.io
 
 按：英文版部分文档大部分取自官方（consul.io）文档。
 
-# 文章目录如下
-
+# Content
 
 * [Introduction](README.md)
 * [1. Documentation Home](document/README.md)
