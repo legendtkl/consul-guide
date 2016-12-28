@@ -12,12 +12,14 @@ consul 致力于为服务治理提供一整套的解决方案，这俩年在国�
 
 感谢所有 contributor。
 
+## 在线 gitbook
+在线 gitbook 地址：consul-guide.github.io/consul-guide
 
 # 目录
 
 * [Consul 指南](README.md)
-* [1. Documentation Home](document/README.md)
-    * [1.1 What is consul](document/whatisconsul.md)
+* [1. 新手指南](document/README.md)
+    * [1.1 Consul 是什么？](document/whatisconsul.md)
     * [1.2 Consul vs. Other Software](document/comparison.md)
         * [1.2.1 ZooKeeper,doozerd,etcd](document/zookeeper.md)
         * [1.2.2 Chef,Puppet,etc](document/chef.md)
@@ -26,16 +28,16 @@ consul 致力于为服务治理提供一整套的解决方案，这俩年在国�
         * [1.2.5 SmartStack](document/smartstack.md)
         * [1.2.6 Serf](document/serf.md)
         * [1.2.7 Custom Solutions](document/custom_solutions.md)
-    * [1.3 Consul & The Hashicorp Ecosystem](document/hashicorp_ecosystem.md)
-    * [1.4 Getting Started](document/getting_started.md)
-        * [1.4.1 Install Consul](document/install_consul.md)
-        * [1.4.2 Run the Agent](document/run_the_agent.md)
-        * [1.4.3 Services](document/services.md)
-        * [1.4.4 Consul Cluster](document/consul_cluster.md)
-        * [1.4.5 Health Checks](document/health_checks.md)
-        * [1.4.6 Key/Value Data](document/key_value_data.md)
+    * [1.3 Consul & Hashicorp 生态](document/hashicorp_ecosystem.md)
+    * [1.4 入门指南](document/getting_started.md)
+        * [1.4.1 Consul安装](document/install_consul.md)
+        * [1.4.2 运行Agent](document/run_the_agent.md)
+        * [1.4.3 服务](document/services.md)
+        * [1.4.4 Consul集群](document/consul_cluster.md)
+        * [1.4.5 健康检查](document/health_checks.md)
+        * [1.4.6 K/V存储](document/key_value_data.md)
         * [1.4.7 Web UI](document/web_ui.md)
-        * [1.4.8 Next Steps](document/next_steps.md)
+        * [1.4.8 下一步](document/next_steps.md)
 * [2. Upgrading and Compatibility](upgrade/README.md)
     * [2.1 Upgrading Consul](upgrade/upgrading_consul.md)
     * [2.2 Compatibility Promise](upgrade/compatibility_promise.md)
