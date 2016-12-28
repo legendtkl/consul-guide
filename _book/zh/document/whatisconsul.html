@@ -1,0 +1,1332 @@
+
+<!DOCTYPE HTML>
+<html lang="zh" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>1.1 What is consul · consul guide and inside</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-okaidia.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-emphasize/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="comparison.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Consul 指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    1. Documentation Home
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1" data-path="whatisconsul.html">
+            
+                <a href="whatisconsul.html">
+            
+                    
+                    1.1 What is consul
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="comparison.html">
+            
+                <a href="comparison.html">
+            
+                    
+                    1.2 Consul vs. Other Software
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="zookeeper.html">
+            
+                <a href="zookeeper.html">
+            
+                    
+                    1.2.1 ZooKeeper,doozerd,etcd
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="chef.html">
+            
+                <a href="chef.html">
+            
+                    
+                    1.2.2 Chef,Puppet,etc
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.3" data-path="nagios.html">
+            
+                <a href="nagios.html">
+            
+                    
+                    1.2.3 Nagios,Sensu
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.4" data-path="skyDNS.html">
+            
+                <a href="skyDNS.html">
+            
+                    
+                    1.2.4 SkyDNS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.5" data-path="smartstack.html">
+            
+                <a href="smartstack.html">
+            
+                    
+                    1.2.5 SmartStack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.6" data-path="serf.html">
+            
+                <a href="serf.html">
+            
+                    
+                    1.2.6 Serf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.7" data-path="custom_solutions.html">
+            
+                <a href="custom_solutions.html">
+            
+                    
+                    1.2.7 Custom Solutions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="hashicorp_ecosystem.html">
+            
+                <a href="hashicorp_ecosystem.html">
+            
+                    
+                    1.3 Consul & The Hashicorp Ecosystem
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="getting_started.html">
+            
+                <a href="getting_started.html">
+            
+                    
+                    1.4 Getting Started
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.4.1" data-path="install_consul.html">
+            
+                <a href="install_consul.html">
+            
+                    
+                    1.4.1 Install Consul
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.2" data-path="run_the_agent.html">
+            
+                <a href="run_the_agent.html">
+            
+                    
+                    1.4.2 Run the Agent
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.3" data-path="services.html">
+            
+                <a href="services.html">
+            
+                    
+                    1.4.3 Services
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.4" data-path="consul_cluster.html">
+            
+                <a href="consul_cluster.html">
+            
+                    
+                    1.4.4 Consul Cluster
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.5" data-path="health_checks.html">
+            
+                <a href="health_checks.html">
+            
+                    
+                    1.4.5 Health Checks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.6" data-path="key_value_data.html">
+            
+                <a href="key_value_data.html">
+            
+                    
+                    1.4.6 Key/Value Data
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.7" data-path="web_ui.html">
+            
+                <a href="web_ui.html">
+            
+                    
+                    1.4.7 Web UI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.8" data-path="next_steps.html">
+            
+                <a href="next_steps.html">
+            
+                    
+                    1.4.8 Next Steps
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../upgrade/">
+            
+                <a href="../upgrade/">
+            
+                    
+                    2. Upgrading and Compatibility
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../upgrade/upgrading_consul.html">
+            
+                <a href="../upgrade/upgrading_consul.html">
+            
+                    
+                    2.1 Upgrading Consul
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../upgrade/compatibility_promise.html">
+            
+                <a href="../upgrade/compatibility_promise.html">
+            
+                    
+                    2.2 Compatibility Promise
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../upgrade/specific_version.html">
+            
+                <a href="../upgrade/specific_version.html">
+            
+                    
+                    2.3 Specific Version Details
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../internal/">
+            
+                <a href="../internal/">
+            
+                    
+                    3. Consul Internals
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../internal/architecture.html">
+            
+                <a href="../internal/architecture.html">
+            
+                    
+                    3.1 Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../internal/consensus_protocal.html">
+            
+                <a href="../internal/consensus_protocal.html">
+            
+                    
+                    3.2 Consensus Protocol
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../internal/gossip_protocal.html">
+            
+                <a href="../internal/gossip_protocal.html">
+            
+                    
+                    3.3 Gossip Protocal
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../internal/network_coordinates.html">
+            
+                <a href="../internal/network_coordinates.html">
+            
+                    
+                    3.4 Network Coordinates
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../internal/sessions.html">
+            
+                <a href="../internal/sessions.html">
+            
+                    
+                    3.5 Sessions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../internal/acls.html">
+            
+                <a href="../internal/acls.html">
+            
+                    
+                    3.6 ACLs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../internal/anti_entropy.html">
+            
+                <a href="../internal/anti_entropy.html">
+            
+                    
+                    3.7 Anti-Entropy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../internal/security_model.html">
+            
+                <a href="../internal/security_model.html">
+            
+                    
+                    3.8 Security Model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../internal/jepsen_testing.html">
+            
+                <a href="../internal/jepsen_testing.html">
+            
+                    
+                    3.9 Jepsen Testing
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../commands/">
+            
+                <a href="../commands/">
+            
+                    
+                    4. Consul Commands(CLI)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../commands/agent.html">
+            
+                <a href="../commands/agent.html">
+            
+                    
+                    4.1 agent
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../commands/configtest.html">
+            
+                <a href="../commands/configtest.html">
+            
+                    
+                    4.2 configtest
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../commands/event.html">
+            
+                <a href="../commands/event.html">
+            
+                    
+                    4.3 event
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../commands/exec.html">
+            
+                <a href="../commands/exec.html">
+            
+                    
+                    4.4 exec
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../commands/force_leave.html">
+            
+                <a href="../commands/force_leave.html">
+            
+                    
+                    4.5 force-leave
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../commands/join.html">
+            
+                <a href="../commands/join.html">
+            
+                    
+                    4.6 join
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../commands/keygen.html">
+            
+                <a href="../commands/keygen.html">
+            
+                    
+                    4.7 keygen
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../commands/keyring.html">
+            
+                <a href="../commands/keyring.html">
+            
+                    
+                    4.8 keyring
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../commands/kv.html">
+            
+                <a href="../commands/kv.html">
+            
+                    
+                    4.9 kv
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../commands/leave.html">
+            
+                <a href="../commands/leave.html">
+            
+                    
+                    4.10 leave
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="../commands/lock.html">
+            
+                <a href="../commands/lock.html">
+            
+                    
+                    4.11 lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="../commands/maint.html">
+            
+                <a href="../commands/maint.html">
+            
+                    
+                    4.12 maint
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.13" data-path="../commands/members.html">
+            
+                <a href="../commands/members.html">
+            
+                    
+                    4.13 members
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14" data-path="../commands/monitor.html">
+            
+                <a href="../commands/monitor.html">
+            
+                    
+                    4.14 monitor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="../commands/operator.html">
+            
+                <a href="../commands/operator.html">
+            
+                    
+                    4.15 operator
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.16" data-path="../commands/info.html">
+            
+                <a href="../commands/info.html">
+            
+                    
+                    4.16 info
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.17" data-path="../commands/reload.html">
+            
+                <a href="../commands/reload.html">
+            
+                    
+                    4.17 reload
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.18" data-path="../commands/rtt.html">
+            
+                <a href="../commands/rtt.html">
+            
+                    
+                    4.18 rtt
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.19" data-path="../commands/snapshot.html">
+            
+                <a href="../commands/snapshot.html">
+            
+                    
+                    4.19 snapshot
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.20" data-path="../commands/watch.html">
+            
+                <a href="../commands/watch.html">
+            
+                    
+                    4.20 watch
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../agent/">
+            
+                <a href="../agent/">
+            
+                    
+                    5. Consul Agent
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../agent/running_and_stopping.html">
+            
+                <a href="../agent/running_and_stopping.html">
+            
+                    
+                    5.1 Running and Stopping
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../agent/dns_interface.html">
+            
+                <a href="../agent/dns_interface.html">
+            
+                    
+                    5.2 DNS Interface
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../agent/http_api.html">
+            
+                <a href="../agent/http_api.html">
+            
+                    
+                    5.3 HTTP API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../agent/configuration.html">
+            
+                <a href="../agent/configuration.html">
+            
+                    
+                    5.4 Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../agent/service_definitions.html">
+            
+                <a href="../agent/service_definitions.html">
+            
+                    
+                    5.5 Service Definitions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../agent/check_definitions.html">
+            
+                <a href="../agent/check_definitions.html">
+            
+                    
+                    5.6 Check Definitions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../agent/encryption.html">
+            
+                <a href="../agent/encryption.html">
+            
+                    
+                    5.7 Encryption
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../agent/rpc_protocol.html">
+            
+                <a href="../agent/rpc_protocol.html">
+            
+                    
+                    5.8 RPC Protocol
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../agent/telemetry.html">
+            
+                <a href="../agent/telemetry.html">
+            
+                    
+                    5.9 Telemetry
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../agent/watches.html">
+            
+                <a href="../agent/watches.html">
+            
+                    
+                    5.10 Watches
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../guides/">
+            
+                <a href="../guides/">
+            
+                    
+                    6. Guides
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../guides/atlas_integration.html">
+            
+                <a href="../guides/atlas_integration.html">
+            
+                    
+                    6.1 Atlas Integration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../guides/add_remove_servers.html">
+            
+                <a href="../guides/add_remove_servers.html">
+            
+                    
+                    6.2 Adding/Removing Servers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../guides/bootstrapping.html">
+            
+                <a href="../guides/bootstrapping.html">
+            
+                    
+                    6.3 Bootstrapping
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../guides/dns_forwarding.html">
+            
+                <a href="../guides/dns_forwarding.html">
+            
+                    
+                    6.4 DNS Forwarding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../guides/external_services.html">
+            
+                <a href="../guides/external_services.html">
+            
+                    
+                    6.5 External Services
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../guides/leader_election.html">
+            
+                <a href="../guides/leader_election.html">
+            
+                    
+                    6.6 Leader Election
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../guides/multiple_datacenters.html">
+            
+                <a href="../guides/multiple_datacenters.html">
+            
+                    
+                    6.7 Multiple Datacenters
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="../guides/outage_recovery.html">
+            
+                <a href="../guides/outage_recovery.html">
+            
+                    
+                    6.8 Outage Recovery
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="../guides/semaphore.html">
+            
+                <a href="../guides/semaphore.html">
+            
+                    
+                    6.9 Semaphore
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="../guides/server_performance.html">
+            
+                <a href="../guides/server_performance.html">
+            
+                    
+                    6.10 Server Performance
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../QA/">
+            
+                <a href="../QA/">
+            
+                    
+                    7. Frequently Asked Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >1.1 What is consul</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="consul-&#x7B80;&#x4ECB;">Consul &#x7B80;&#x4ECB;</h1>
+<p>&#x8FD9;&#x7AE0;&#x4E3B;&#x8981;&#x4F1A;&#x544A;&#x8BC9;&#x5927;&#x5BB6; Consul &#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF0C;&#x548C;&#x5176;&#x4ED6;&#x7C7B;&#x4F3C;&#x8F6F;&#x4EF6;&#x76F8;&#x6BD4;&#x6709;&#x4EC0;&#x4E48;&#x5229;&#x5F0A;&#xFF0C;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x3002;</p>
+<h2 id="consul-&#x662F;&#x4EC0;&#x4E48;&#xFF1F;">Consul &#x662F;&#x4EC0;&#x4E48;&#xFF1F;</h2>
+<p>Consul &#x6709;&#x5F88;&#x591A;&#x6A21;&#x5757;&#xFF0C;&#x603B;&#x7684;&#x6765;&#x8BF4;&#xFF0C;Consul &#x662F;&#x4E00;&#x4E2A;&#x81F4;&#x529B;&#x4E8E;&#x670D;&#x52A1;&#x6CBB;&#x7406;&#x7684;&#x4E00;&#x7AD9;&#x5F0F;&#x5DE5;&#x5177;&#x3002;&#x4E3B;&#x8981;&#x7279;&#x6027;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li><strong>&#x670D;&#x52A1;&#x53D1;&#x73B0;&#xFF1A;</strong>Consul Client &#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#xFF0C;&#x6BD4;&#x5982;<code>API</code> &#x6216;&#x8005; <code>mysql</code>&#xFF0C;&#x5176;&#x4ED6;&#x7684; client &#x53EF;&#x4EE5;&#x4F7F;&#x7528; Consul &#x53BB;&#x53D1;&#x73B0;&#x670D;&#x52A1;&#x7684;&#x63D0;&#x4F9B;&#x8005;&#x3002;&#x652F;&#x6301; DNS &#x6216;&#x8005; HTTP &#x67E5;&#x8BE2;&#x3002;</li>
+<li><strong>&#x5065;&#x5EB7;&#x76D1;&#x6D4B;&#xFF1A;</strong>Consul Client&#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x4EFB;&#x610F;&#x6570;&#x91CF;&#x7684;&#x5065;&#x5EB7;&#x68C0;&#x67E5;&#xFF0C;&#x6216;&#x8005;&#x548C;&#x4E00;&#x4E2A;&#x6307;&#x5B9A;&#x7684;&#x670D;&#x52A1;&#x76F8;&#x5173;&#xFF08;&#x5982;&#x201C;webserver&#x662F;&#x5426;&#x8FD4;&#x56DE;200 OK&#x201D;&#xFF09;&#xFF0C;&#x6216;&#x8005;&#x4E0E;&#x672C;&#x5730;&#x8282;&#x70B9;&#x76F8;&#x5173;&#xFF08;&#x5982;&#x201C;&#x5185;&#x5B58;&#x5229;&#x7528;&#x7387;&#x662F;&#x5426;&#x5728;90%&#x4EE5;&#x4E0B;&#x201D;&#xFF09;&#x3002;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x53EF;&#x88AB;operator&#x7528;&#x6765;&#x76D1;&#x63A7;&#x96C6;&#x7FA4;&#x7684;&#x76D1;&#x63A7;&#x72B6;&#x6001;&#xFF0C;&#x5E76;&#x88AB;&#x670D;&#x52A1;&#x53D1;&#x73B0;&#x7EC4;&#x4EF6;&#x7528;&#x6765;&#x907F;&#x514D;&#x5C06;&#x6D41;&#x91CF;&#x5BFC;&#x5411;&#x4E0D;&#x5065;&#x5EB7;&#x7684;&#x8282;&#x70B9;&#x3002;</li>
+<li><strong>K/V &#x5B58;&#x50A8;&#xFF1A;</strong>&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Consul&#x7684;&#x5206;&#x7EA7;K/V&#x5B58;&#x50A8;&#x5B8C;&#x6210;&#x5F88;&#x591A;&#x4E8B;&#x60C5;&#xFF0C;&#x5305;&#x62EC;&#x52A8;&#x6001;&#x914D;&#x7F6E;&#x3001;&#x7279;&#x6027;&#x6807;&#x8BB0;&#x3001;&#x534F;&#x8C03;&#x3001;&#x4E3B;&#x9009;&#x4E3E;&#x7B49;&#x7B49;&#x3002;&#x7B80;&#x5355;&#x7684;HTTP&#x63A5;&#x53E3;&#x4F7F;&#x5B83;&#x975E;&#x5E38;&#x4FBF;&#x4E8E;&#x4F7F;&#x7528;&#x3002;</li>
+<li><strong>&#x652F;&#x6301;&#x8DE8;&#x6570;&#x636E;&#x4E2D;&#x5FC3;&#xFF1A;</strong>Consul&#x5929;&#x751F;&#x5F88;&#x597D;&#x7684;&#x652F;&#x6301;&#x8DE8;&#x6570;&#x636E;&#x4E2D;&#x5FC3;&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;Consul&#x7684;&#x4F7F;&#x7528;&#x8005;&#x4E0D;&#x5FC5;&#x518D;&#x52B3;&#x70E6;&#x53BB;&#x6784;&#x5EFA;&#x989D;&#x5916;&#x7684;&#x865A;&#x62DF;&#x5C42;&#x6765;&#x652F;&#x6301;&#x96C6;&#x7FA4;&#x589E;&#x957F;&#x5230;&#x591A;&#x4E2A;region&#x3002;</li>
+</ul>
+<p>Consul&#x88AB;&#x8BBE;&#x8BA1;&#x4E3A;&#x591A;&#x8FD0;&#x7EF4;&#x4EBA;&#x5458;&#x548C;&#x5E94;&#x7528;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x90FD;&#x8BF4;&#x53CB;&#x597D;&#x7684;&#xFF0C;&#x8FD9;&#x4F7F;&#x5F97;&#x5B83;&#x975E;&#x5E38;&#x9002;&#x5408;&#x4E8E;&#x73B0;&#x4EE3;&#x7684;&#x3001;&#x52A8;&#x6001;&#x7684;&#x57FA;&#x7840;&#x8BBE;&#x65BD;&#x3002;</p>
+<h2 id="consul&#x57FA;&#x7840;&#x67B6;&#x6784;">Consul&#x57FA;&#x7840;&#x67B6;&#x6784;</h2>
+<p>Consul&#x662F;&#x4E00;&#x4E2A;&#x5206;&#x5E03;&#x5F0F;&#x7684;&#x3001;&#x9AD8;&#x53EF;&#x7528;&#x7684;&#x7CFB;&#x7EDF;&#x3002;&#x672C;&#x8282;&#x53EA;&#x4F1A;&#x8986;&#x76D6;&#x57FA;&#x7840;&#xFF0C;&#x523B;&#x610F;&#x7701;&#x7565;&#x4E86;&#x4E00;&#x4E9B;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x7EC6;&#x8282;&#xFF0C;&#x4ECE;&#x800C;&#x4F7F;&#x5F97;&#x8BFB;&#x8005;&#x53EF;&#x4EE5;&#x66F4;&#x5FEB;&#x7684;&#x7406;&#x89E3;Consul&#x662F;&#x5982;&#x4F55;&#x5DE5;&#x4F5C;&#x7684;&#x3002;</p>
+<p>&#x6BCF;&#x4E2A;&#x5BF9;Consul&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x7684;&#x8282;&#x70B9;&#x4E0A;&#x90FD;&#x8FD0;&#x884C;&#x7740;Consul agent&#x3002;&#x53EA;&#x8FDB;&#x884C;&#x53D1;&#x73B0;&#x670D;&#x52A1;&#x6216;&#x83B7;&#x5F97;/&#x8BBE;&#x7F6E;KV&#x5B58;&#x50A8;&#x6570;&#x636E;&#x503C;&#x7684;&#x8282;&#x70B9;&#x65E0;&#x9700;&#x8FD0;&#x884C;agent&#x3002;Agent&#x7528;&#x4E8E;&#x5BF9;&#x8282;&#x70B9;&#x4E0A;&#x7684;&#x670D;&#x52A1;&#x548C;&#x8282;&#x70B9;&#x672C;&#x8EAB;&#x8FDB;&#x884C;&#x5065;&#x5EB7;&#x68C0;&#x67E5;&#x3002;</p>
+<p>&#x6BCF;&#x4E2A;agent&#x53EF;&#x4E0E;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;Consul server&#x901A;&#x4FE1;&#x3002;Consul server&#x4E2D;&#x5B58;&#x50A8;&#x6570;&#x636E;&#x548C;&#x526F;&#x672C;&#xFF0C;&#x6240;&#x6709;&#x7684;Consul server&#x4F1A;&#x9009;&#x4E3E;&#x51FA;&#x4E00;&#x4E2A;&#x4E3B;&#x3002;&#x867D;&#x7136;&#x53EA;&#x6709;&#x4E00;&#x4E2A;server&#x4E5F;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#xFF0C;&#x4F46;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;3-5&#x53F0;server&#x4EE5;&#x907F;&#x514D;&#x8282;&#x70B9;&#x5931;&#x6548;&#x5BFC;&#x81F4;&#x6570;&#x636E;&#x4E22;&#x5931;&#x7684;&#x573A;&#x666F;&#x3002;&#x5EFA;&#x8BAE;&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#x4E2D;&#x5FC3;&#x4F7F;&#x7528;Consul server&#x96C6;&#x7FA4;&#x3002;</p>
+<p>&#x57FA;&#x7840;&#x8BBE;&#x65BD;&#x4E2D;&#x9700;&#x8981;&#x53D1;&#x73B0;&#x5176;&#x5B83;&#x670D;&#x52A1;&#x6216;&#x8282;&#x70B9;&#x7684;&#x7EC4;&#x4EF6;&#x53EF;&#x4EE5;&#x67E5;&#x8BE2;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;Consul server&#x6216;agent&#xFF0C;agent&#x4F1A;&#x81EA;&#x52A8;&#x5C06;&#x8BF7;&#x6C42;&#x8F6C;&#x53D1;&#x7ED9;server&#x3002;</p>
+<p>&#x6BCF;&#x4E2A;&#x6570;&#x636E;&#x4E2D;&#x5FC3;&#x90FD;&#x8FD0;&#x884C;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#x7684;Consul server&#x3002;&#x5F53;&#x51FA;&#x73B0;&#x4E00;&#x4E2A;&#x8DE8;&#x6570;&#x636E;&#x4E2D;&#x5FC3;&#x7684;&#x670D;&#x52A1;&#x53D1;&#x73B0;&#x6216;&#x914D;&#x7F6E;&#x53D1;&#x73B0;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C;&#x672C;&#x5730;Consul server&#x4F1A;&#x5C06;&#x8BF7;&#x6C42;&#x8F6C;&#x53D1;&#x7ED9;&#x8FDC;&#x7A0B;&#x6570;&#x636E;&#x4E2D;&#x5FC3;&#x5E76;&#x4F20;&#x9012;&#x7ED3;&#x679C;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 1. Documentation Home">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="comparison.html" class="navigation navigation-next " aria-label="Next page: 1.2 Consul vs. Other Software">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"1.1 What is consul","level":"1.2.1","depth":2,"next":{"title":"1.2 Consul vs. Other Software","level":"1.2.2","depth":2,"path":"document/comparison.md","ref":"document/comparison.md","articles":[{"title":"1.2.1 ZooKeeper,doozerd,etcd","level":"1.2.2.1","depth":3,"path":"document/zookeeper.md","ref":"document/zookeeper.md","articles":[]},{"title":"1.2.2 Chef,Puppet,etc","level":"1.2.2.2","depth":3,"path":"document/chef.md","ref":"document/chef.md","articles":[]},{"title":"1.2.3 Nagios,Sensu","level":"1.2.2.3","depth":3,"path":"document/nagios.md","ref":"document/nagios.md","articles":[]},{"title":"1.2.4 SkyDNS","level":"1.2.2.4","depth":3,"path":"document/skyDNS.md","ref":"document/skyDNS.md","articles":[]},{"title":"1.2.5 SmartStack","level":"1.2.2.5","depth":3,"path":"document/smartstack.md","ref":"document/smartstack.md","articles":[]},{"title":"1.2.6 Serf","level":"1.2.2.6","depth":3,"path":"document/serf.md","ref":"document/serf.md","articles":[]},{"title":"1.2.7 Custom Solutions","level":"1.2.2.7","depth":3,"path":"document/custom_solutions.md","ref":"document/custom_solutions.md","articles":[]}]},"previous":{"title":"1. Documentation Home","level":"1.2","depth":1,"path":"document/README.md","ref":"document/README.md","articles":[{"title":"1.1 What is consul","level":"1.2.1","depth":2,"path":"document/whatisconsul.md","ref":"document/whatisconsul.md","articles":[]},{"title":"1.2 Consul vs. Other Software","level":"1.2.2","depth":2,"path":"document/comparison.md","ref":"document/comparison.md","articles":[{"title":"1.2.1 ZooKeeper,doozerd,etcd","level":"1.2.2.1","depth":3,"path":"document/zookeeper.md","ref":"document/zookeeper.md","articles":[]},{"title":"1.2.2 Chef,Puppet,etc","level":"1.2.2.2","depth":3,"path":"document/chef.md","ref":"document/chef.md","articles":[]},{"title":"1.2.3 Nagios,Sensu","level":"1.2.2.3","depth":3,"path":"document/nagios.md","ref":"document/nagios.md","articles":[]},{"title":"1.2.4 SkyDNS","level":"1.2.2.4","depth":3,"path":"document/skyDNS.md","ref":"document/skyDNS.md","articles":[]},{"title":"1.2.5 SmartStack","level":"1.2.2.5","depth":3,"path":"document/smartstack.md","ref":"document/smartstack.md","articles":[]},{"title":"1.2.6 Serf","level":"1.2.2.6","depth":3,"path":"document/serf.md","ref":"document/serf.md","articles":[]},{"title":"1.2.7 Custom Solutions","level":"1.2.2.7","depth":3,"path":"document/custom_solutions.md","ref":"document/custom_solutions.md","articles":[]}]},{"title":"1.3 Consul & The Hashicorp Ecosystem","level":"1.2.3","depth":2,"path":"document/hashicorp_ecosystem.md","ref":"document/hashicorp_ecosystem.md","articles":[]},{"title":"1.4 Getting Started","level":"1.2.4","depth":2,"path":"document/getting_started.md","ref":"document/getting_started.md","articles":[{"title":"1.4.1 Install Consul","level":"1.2.4.1","depth":3,"path":"document/install_consul.md","ref":"document/install_consul.md","articles":[]},{"title":"1.4.2 Run the Agent","level":"1.2.4.2","depth":3,"path":"document/run_the_agent.md","ref":"document/run_the_agent.md","articles":[]},{"title":"1.4.3 Services","level":"1.2.4.3","depth":3,"path":"document/services.md","ref":"document/services.md","articles":[]},{"title":"1.4.4 Consul Cluster","level":"1.2.4.4","depth":3,"path":"document/consul_cluster.md","ref":"document/consul_cluster.md","articles":[]},{"title":"1.4.5 Health Checks","level":"1.2.4.5","depth":3,"path":"document/health_checks.md","ref":"document/health_checks.md","articles":[]},{"title":"1.4.6 Key/Value Data","level":"1.2.4.6","depth":3,"path":"document/key_value_data.md","ref":"document/key_value_data.md","articles":[]},{"title":"1.4.7 Web UI","level":"1.2.4.7","depth":3,"path":"document/web_ui.md","ref":"document/web_ui.md","articles":[]},{"title":"1.4.8 Next Steps","level":"1.2.4.8","depth":3,"path":"document/next_steps.md","ref":"document/next_steps.md","articles":[]}]}]},"dir":"ltr"},"config":{"plugins":["toggle-chapters","splitter","prism","-highlight","emphasize"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"emphasize":{},"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"consul guide and inside","language":"zh","gitbook":"*","description":"consul is an awesome sofeware for service discovery"},"file":{"path":"document/whatisconsul.md","mtime":"2016-12-27T15:30:54.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-12-28T13:22:17.250Z"},"basePath":"..","book":{"language":"zh"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
