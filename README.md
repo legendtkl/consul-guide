@@ -1,3 +1,6 @@
-# My Awesome Book
+# Consul Guide
+This is Consul Guide Gitbook. You can find the english edition in en directory, and chinese edition in zh edition. 
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
+
+# Gitbook View
+To view the gitbook, please refer: consul-guide.github.io/consul-guide
