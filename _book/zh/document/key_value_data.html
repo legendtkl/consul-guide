@@ -1222,6 +1222,75 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="146-keyvalue-data">1.4.6 Key/Value Data</h1>
+<p>&#x9664;&#x4E86;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x53D1;&#x73B0;&#x548C;&#x5065;&#x5EB7;&#x68C0;&#x6D4B;&#xFF0C;Consul &#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#x4F7F;&#x7528; K/V &#x5B58;&#x50A8;&#x3002;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5B58;&#x50A8;&#x52A8;&#x6001;&#x914D;&#x7F6E;&#x3001;&#x670D;&#x52A1;&#x534F;&#x4F5C;&#x3001;&#x9009;&#x4E3B;&#x4EE5;&#x53CA;&#x5F88;&#x591A;&#x6709;&#x8DA3;&#x7684;&#x4E8B;&#x60C5;&#x3002;</p>
+<p>&#x4F7F;&#x7528; K/V &#x5B58;&#x50A8;&#x4E4B;&#x524D;&#x9700;&#x8981;&#x4FDD;&#x8BC1;&#x6709;&#x4E00;&#x4E2A; agent &#x5728;&#x8FD0;&#x884C;&#x3002;</p>
+<h2 id="&#x7B80;&#x5355;&#x7528;&#x6CD5;">&#x7B80;&#x5355;&#x7528;&#x6CD5;</h2>
+<p>&#x6211;&#x4EEC;&#x4E0B;&#x9762;&#x6F14;&#x793A;&#x4E00;&#x4E0B;&#x5982;&#x4F55;&#x4F7F;&#x7528; K/V &#x5B58;&#x50A8;&#xFF0C;&#x5F88;&#x7B80;&#x5355;&#x3002;K/V &#x5B58;&#x50A8;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;HTTP API &#x548C; Consul KV cli&#x3002;&#x4E0B;&#x9762;&#x6F14;&#x793A;&#x5982;&#x4F55;&#x4F7F;&#x7528; cli&#x3002;&#x5173;&#x4E8E; HTTP API &#x53EF;&#x4EE5;&#x53C2;&#x8003; Agent &#x90A3;&#x4E00;&#x7AE0;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x5148;&#x8BF7;&#x6C42;&#x8DEF;&#x5F84; <code>redis/config/mincons</code> &#x4E0B;&#x9762;&#x7684; key &#x7684;&#x503C;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ consul kv get redis/config/minconns
+Error<span class="token operator">!</span> No key exists at: redis/config/minconns
+</code></pre>
+<p>&#x5982;&#x4F60;&#x6240;&#x89C1;&#xFF0C;&#x6CA1;&#x6709;&#x5F97;&#x5230;&#x7ED3;&#x679C;&#x3002;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x8FD8;&#x6CA1;&#x6709;&#x5B58;&#x653E;&#x6570;&#x636E;&#x3002;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x4F7F;&#x7528; <code>put</code> &#x547D;&#x4EE4;&#x5B58;&#x6570;&#x636E;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ consul kv put redis/config/minconns 1
+Success<span class="token operator">!</span> Data written to: redis/config/minconns
+
+$ consul kv put redis/config/maxconns 25
+Success<span class="token operator">!</span> Data written to: redis/config/maxconns
+
+$ consul kv put -flags<span class="token operator">=</span>42 redis/config/users/admin abcd1234
+Success<span class="token operator">!</span> Data written to: redis/config/users/admin
+</code></pre>
+<p>&#x67E5;&#x8BE2;</p>
+<pre class="language-"><code class="lang-bash">$ consul kv get redis/config/minconns
+1
+</code></pre>
+<p>Consul &#x8FD8;&#x8BB0;&#x5F55;&#x4E86; key &#x7684;&#x5176;&#x4ED6;&#x5143;&#x6570;&#x636E;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>-detailed</code> &#x53C2;&#x6570;&#x67E5;&#x770B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ consul kv get -detailed redis/config/minconns
+CreateIndex      207
+Flags            0
+Key              redis/config/minconns
+LockIndex        0
+ModifyIndex      207
+Session          -
+Value            1
+</code></pre>
+<p>&#x6BD4;&#x5982;&#x53C2;&#x6570; <code>flag</code>&#xFF0C;client &#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E9B;&#x6709;&#x610F;&#x4E49;&#x7684;&#x503C;&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x9009;&#x9879; <code>recurse</code>&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5217;&#x51FA;&#x6240;&#x6709;&#x7684; key/value&#x3002;&#x7ED3;&#x679C;&#x4EE5;&#x5B57;&#x5178;&#x5E8F;&#x6392;&#x5217;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ consul kv get -recurse
+redis/config/maxconns:25
+redis/config/minconns:1
+redis/config/users/admin:abcd1234
+</code></pre>
+<p>&#x5220;&#x9664;</p>
+<pre class="language-"><code class="lang-bash">$ consul kv delete redis/config/minconns
+Success<span class="token operator">!</span> Deleted key: redis/config/minconns
+</code></pre>
+<p>&#x901A;&#x8FC7;&#x9009;&#x9879; <code>recurse</code> &#x9009;&#x9879;&#x53EF;&#x4EE5;&#x5220;&#x9664;&#x5171;&#x540C;&#x524D;&#x7F00;&#x7684;&#x6240;&#x6709; key&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ consul kv delete -recurse redis
+Success<span class="token operator">!</span> Deleted keys with prefix: redis
+</code></pre>
+<p>&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>put</code> &#x65B0; value &#x5B9E;&#x73B0;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ consul kv put foo bar
+
+$ consul kv get foo
+bar
+
+$ consul kv put foo <span class="token function">zip</span>
+
+$ consul kv get foo
+<span class="token function">zip</span>
+</code></pre>
+<p>Consul &#x652F;&#x6301; key &#x7684;&#x539F;&#x5B50;&#x66F4;&#x65B0;&#xFF0C;&#x4F7F;&#x7528; <code>Check-And-Set</code> &#x64CD;&#x4F5C;&#xFF0C;&#x53C2;&#x6570; <code>-cas</code>.</p>
+<pre class="language-"><code class="lang-bash">$ consul kv put -cas -modify-index<span class="token operator">=</span>123 foo bar
+Success<span class="token operator">!</span> Data written to: foo
+
+$ consul kv put -cas -modify-index<span class="token operator">=</span>123 foo bar
+Error<span class="token operator">!</span> Did not <span class="token function">write</span> to foo: CAS failed
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A; CAS &#x66F4;&#x65B0;&#x6210;&#x529F;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A; index &#x7684;&#x503C;&#x4E3A; 123&#x3002;&#x7B2C;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x5931;&#x8D25;&#xFF0C;&#x56E0;&#x4E3A; index &#x503C;&#x4E0D;&#x518D;&#x662F; 123&#x3002;</p>
+<h2 id="&#x4E0B;&#x4E00;&#x6B65;">&#x4E0B;&#x4E00;&#x6B65;</h2>
+<p>&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x53EA;&#x662F;&#x7B80;&#x5355;&#x5217;&#x4E86;&#x51E0;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x66F4;&#x8BE6;&#x7EC6;&#x7684;&#x4FE1;&#x606F;&#x8BF7;&#x53C2;&#x8003; <a href="../commands/kv.html">K/V CLI</a></p>
+<p>&#x4E0B;&#x4E00;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B; Consul &#x7684; web UI&#x3002;</p>
 
                                 
                                 </section>
@@ -1265,7 +1334,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.4.6 K/V存储","level":"1.2.4.6","depth":3,"next":{"title":"1.4.7 Web UI","level":"1.2.4.7","depth":3,"path":"document/web_ui.md","ref":"document/web_ui.md","articles":[]},"previous":{"title":"1.4.5 健康检查","level":"1.2.4.5","depth":3,"path":"document/health_checks.md","ref":"document/health_checks.md","articles":[]},"dir":"ltr"},"config":{"plugins":["toggle-chapters","splitter","prism","-highlight","emphasize"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"emphasize":{},"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"consul guide and inside","language":"zh","gitbook":"*","description":"consul is an awesome sofeware for service discovery"},"file":{"path":"document/key_value_data.md","mtime":"2016-12-27T15:30:54.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-12-28T14:03:46.369Z"},"basePath":"..","book":{"language":"zh"}});
+            gitbook.page.hasChanged({"page":{"title":"1.4.6 K/V存储","level":"1.2.4.6","depth":3,"next":{"title":"1.4.7 Web UI","level":"1.2.4.7","depth":3,"path":"document/web_ui.md","ref":"document/web_ui.md","articles":[]},"previous":{"title":"1.4.5 健康检查","level":"1.2.4.5","depth":3,"path":"document/health_checks.md","ref":"document/health_checks.md","articles":[]},"dir":"ltr"},"config":{"plugins":["toggle-chapters","splitter","prism","-highlight","emphasize"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"emphasize":{},"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"consul guide and inside","language":"zh","gitbook":"*","description":"consul is an awesome sofeware for service discovery"},"file":{"path":"document/key_value_data.md","mtime":"2017-01-03T15:37:28.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-03T15:37:55.326Z"},"basePath":"..","book":{"language":"zh"}});
         });
     </script>
 </div>

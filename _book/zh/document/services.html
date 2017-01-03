@@ -1221,7 +1221,82 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="143-services">1.4.3 Services</h1>
+                                <h1 id="143-&#x670D;&#x52A1;&#x6CE8;&#x518C;">1.4.3 &#x670D;&#x52A1;&#x6CE8;&#x518C;</h1>
+<p>&#x524D;&#x9762;&#x6211;&#x4EEC;&#x542F;&#x52A8;&#x4E86; agent&#xFF0C;&#x5E76;&#x4E14;&#x67E5;&#x770B;&#x4E86;&#x96C6;&#x7FA4;&#x6210;&#x5458;&#xFF0C;&#x5E76;&#x4E14;&#x4ECB;&#x7ECD;&#x4E86; HTTP API &#x548C; DNS &#x7684;&#x65B9;&#x5F0F;&#x3002;&#x8FD9;&#x4E00;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x6CE8;&#x518C;&#x6211;&#x4EEC;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#xFF0C;&#x5E76;&#x4E14;&#x8FDB;&#x884C;&#x67E5;&#x8BE2;&#x3002;</p>
+<h2 id="&#x670D;&#x52A1;&#x5B9A;&#x4E49;">&#x670D;&#x52A1;&#x5B9A;&#x4E49;</h2>
+<p>&#x670D;&#x52A1;&#x6CE8;&#x518C;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x548C; HTTP API&#x3002;</p>
+<p>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x662F;&#x6700;&#x5E38;&#x7528;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6765;&#x6F14;&#x793A;&#x3002;</p>
+<p>&#x9996;&#x5148;&#xFF0C;&#x5EFA;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#x7528;&#x6765;&#x5B58;&#x653E; Consul &#x914D;&#x7F6E;&#x3002;Consul &#x5C06;&#x52A0;&#x8F7D;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x4E0D;&#x59A8;&#x4F7F;&#x7528; Unix &#x7CFB;&#x7EDF;&#x5178;&#x578B;&#x7684;&#x547D;&#x540D;&#x65B9;&#x5F0F; <code>/etc/consul.d</code>(&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49;)&#x3002;</p>
+<pre class="language-"><code class="lang-bash"><span class="token function">sudo</span> <span class="token function">mkdir</span> /etc/consul.d
+</code></pre>
+<p>&#x7136;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x5B9A;&#x4E49;&#x6211;&#x4EEC;&#x7684;&#x670D;&#x52A1;&#x3002;&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x6709;&#x4E00;&#x4E2A;&#x670D;&#x52A1; &#x201C;web&#x201D; &#x8FD0;&#x884C;&#x5728; 80 &#x7AEF;&#x53E3;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x7ED9;&#x5B83;&#x5206;&#x914D;&#x4E00;&#x4E2A; tag &#x540D;&#x5B57;&#x6765;&#x65B9;&#x4FBF;&#x67E5;&#x8BE2;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token keyword">echo</span> <span class="token string">&apos;{&quot;service&quot;: {&quot;name&quot;: &quot;web&quot;, &quot;tags&quot;: [&quot;rails&quot;], &quot;port&quot;: 80}}&apos;</span> \
+    <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/consul.d/web.json
+</code></pre>
+<p>&#x73B0;&#x5728;&#x91CD;&#x542F; agent&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ consul agent -dev -config-dir<span class="token operator">=</span>/etc/consul.d
+<span class="token operator">==</span><span class="token operator">&gt;</span> Starting Consul agent<span class="token punctuation">..</span>.
+<span class="token punctuation">..</span>.
+    <span class="token punctuation">[</span>INFO<span class="token punctuation">]</span> agent: Synced <span class="token function">service</span> <span class="token string">&apos;web&apos;</span>
+<span class="token punctuation">..</span>.
+</code></pre>
+<p>&#x91CD;&#x542F;&#x65E5;&#x5FD7;&#x91CC;&#x9762;&#x53EF;&#x4EE5;&#x770B;&#x51FA; agent &#x540C;&#x6B65;&#x4E86; web &#x670D;&#x52A1;&#xFF0C;&#x4E5F;&#x5C31;&#x662F; agent &#x4ECE;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x8F7D;&#x5165;&#x4E86;&#x670D;&#x52A1;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x5E76;&#x4E14;&#x6CE8;&#x518C;&#x6210;&#x529F;&#x4E86;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x6CE8;&#x518C;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#xFF0C;&#x90A3;&#x4E48;&#x53EA;&#x9700;&#x8981;&#x5728; Consul &#x914D;&#x7F6E;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;</p>
+<h2 id="&#x67E5;&#x8BE2;&#x670D;&#x52A1;">&#x67E5;&#x8BE2;&#x670D;&#x52A1;</h2>
+<p>&#x4E00;&#x65E6; agent &#x542F;&#x52A8;&#xFF0C;&#x5E76;&#x4E14;&#x670D;&#x52A1;&#x88AB;&#x540C;&#x6B65;&#x6210;&#x529F;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x80FD;&#x591F;&#x901A;&#x8FC7; DNS &#x6216;&#x8005; HTTP API &#x6765;&#x67E5;&#x8BE2;&#x670D;&#x52A1;&#x4FE1;&#x606F;&#x4E86;&#x3002;</p>
+<h3 id="dns-api">DNS API</h3>
+<p>&#x5BF9;&#x4E8E; DNS API&#xFF0C;&#x670D;&#x52A1;&#x7684; DNS &#x540D;&#x5B57;&#x662F; <code>NAME.service.consul</code>&#x3002;&#x540D;&#x5B57;&#x9ED8;&#x8BA4;&#x5728; <code>consul</code> &#x540D;&#x5B57;&#x7A7A;&#x95F4;&#x4E0B;&#x3002; <code>service</code> &#x5B50;&#x57DF;&#x610F;&#x601D;&#x662F;&#x6211;&#x4EEC;&#x8981;&#x67E5;&#x8BE2;&#x670D;&#x52A1;&#xFF0C;&#x6700;&#x540E; <code>Name</code> &#x8868;&#x660E;&#x4E86;&#x670D;&#x52A1;&#x7684;&#x540D;&#x5B57;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x6211;&#x4EEC;&#x6CE8;&#x518C;&#x7684; web &#x670D;&#x52A1;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x7684;&#x65B9;&#x5F0F;&#x67E5;&#x8BE2;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">dig</span> @127.0.0.1 -p 8600 web.service.consul
+<span class="token punctuation">..</span>.
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> QUESTION SECTION:
+<span class="token punctuation">;</span>web.service.consul.        IN  A
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> ANSWER SECTION:
+web.service.consul. 0   IN  A   172.20.20.11
+</code></pre>
+<p>&#x4ECE;&#x8F93;&#x51FA;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x4E00;&#x6761; <code>A</code> &#x8BB0;&#x5F55;&#x8FDE;&#x540C; IP &#x5730;&#x5740;&#x88AB;&#x8FD4;&#x56DE;&#x4E86;&#x3002;<code>A</code> &#x8BB0;&#x5F55;&#x53EA;&#x5305;&#x542B; IP &#x5730;&#x5740;&#x3002;</p>
+<p>&#x8981;&#x67E5;&#x8BE2;&#x5305;&#x62EC;&#x7AEF;&#x53E3;&#x5730;&#x5740;&#xFF0C;&#x9700;&#x8981;&#x67E5;&#x8BE2; <code>SRV</code> &#x8BB0;&#x5F55;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">dig</span> @127.0.0.1 -p 8600 web.service.consul SRV
+<span class="token punctuation">..</span>.
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> QUESTION SECTION:
+<span class="token punctuation">;</span>web.service.consul.        IN  SRV
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> ANSWER SECTION:
+web.service.consul. 0   IN  SRV 1 1 80 Armons-MacBook-Air.node.dc1.consul.
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> ADDITIONAL SECTION:
+Armons-MacBook-Air.node.dc1.consul. 0 IN A  172.20.20.11
+</code></pre>
+<p><code>SRV</code> &#x8BB0;&#x5F55;&#x8FD4;&#x56DE;&#x4E86; web &#x670D;&#x52A1;&#x8FD0;&#x884C;&#x7684;&#x7AEF;&#x53E3;&#x4EE5;&#x53CA;&#x8282;&#x70B9; <code>Armons-MacBook-Air.node.dc1.consul</code>&#x3002;&#x7136;&#x540E;&#x4E0B;&#x9762;&#x7D27;&#x63A5;&#x7740;&#x7684;&#x662F;&#x4E00;&#x6761;&#x5BF9;&#x5E94;&#x8282;&#x70B9;&#x7684; <code>A</code> &#x8BB0;&#x5F55;&#x3002;</p>
+<p>&#x6700;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528; DNS API &#x53BB;&#x901A;&#x8FC7; tag &#x67E5;&#x8BE2;&#x8FC7;&#x6EE4;&#x3002;&#x57FA;&#x4E8E; tag &#x7684;&#x670D;&#x52A1;&#x67E5;&#x8BE2;&#x5F62;&#x5F0F;&#x4E3A; <code>TAG.NAME.service.consul</code>&#x3002;&#x4F8B;&#x5B50;&#x5982;&#x4E0B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">dig</span> @127.0.0.1 -p 8600 rails.web.service.consul
+<span class="token punctuation">..</span>.
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> QUESTION SECTION:
+<span class="token punctuation">;</span>rails.web.service.consul.      IN  A
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> ANSWER SECTION:
+rails.web.service.consul.   0   IN  A   172.20.20.11
+</code></pre>
+<h3 id="http-api">HTTP API</h3>
+<p>&#x9664;&#x4E86; DNS API&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; HTTP API &#x53BB;&#x67E5;&#x8BE2;&#x670D;&#x52A1;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ curl http://localhost:8500/v1/catalog/service/web
+<span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">&quot;Node&quot;</span><span class="token keyword">:</span><span class="token string">&quot;Armons-MacBook-Air&quot;</span>,<span class="token string">&quot;Address&quot;</span><span class="token keyword">:</span><span class="token string">&quot;172.20.20.11&quot;</span>,<span class="token string">&quot;ServiceID&quot;</span><span class="token keyword">:</span><span class="token string">&quot;web&quot;</span>, \
+    <span class="token string">&quot;ServiceName&quot;</span><span class="token keyword">:</span><span class="token string">&quot;web&quot;</span>,<span class="token string">&quot;ServiceTags&quot;</span>:<span class="token punctuation">[</span><span class="token string">&quot;rails&quot;</span><span class="token punctuation">]</span>,<span class="token string">&quot;ServicePort&quot;</span>:80<span class="token punctuation">}</span><span class="token punctuation">]</span>
+</code></pre>
+<p>catalog &#x8FD4;&#x56DE;&#x670D;&#x52A1;&#x7684;&#x6240;&#x6709;&#x76F8;&#x5173;&#x8282;&#x70B9;&#x3002;&#x6211;&#x4EEC;&#x4E4B;&#x540E;&#x4F1A;&#x5728;&#x5065;&#x5EB7;&#x68C0;&#x6D4B;&#x4ECB;&#x7ECD;&#x6709;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x53EA;&#x60F3;&#x67E5;&#x8BE2;&#x5065;&#x5EB7;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x7684;&#x547D;&#x4EE4;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ curl <span class="token string">&apos;http://localhost:8500/v1/health/service/web?passing&apos;</span>
+<span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">&quot;Node&quot;</span><span class="token keyword">:</span><span class="token string">&quot;Armons-MacBook-Air&quot;</span>,<span class="token string">&quot;Address&quot;</span><span class="token keyword">:</span><span class="token string">&quot;172.20.20.11&quot;</span>,<span class="token string">&quot;Service&quot;</span>:<span class="token punctuation">{</span> \
+    <span class="token string">&quot;ID&quot;</span><span class="token keyword">:</span><span class="token string">&quot;web&quot;</span>, <span class="token string">&quot;Service&quot;</span><span class="token keyword">:</span><span class="token string">&quot;web&quot;</span>, <span class="token string">&quot;Tags&quot;</span>:<span class="token punctuation">[</span><span class="token string">&quot;rails&quot;</span><span class="token punctuation">]</span>,<span class="token string">&quot;Port&quot;</span>:80<span class="token punctuation">}</span>, <span class="token string">&quot;Checks&quot;</span><span class="token keyword">:</span> <span class="token punctuation">..</span>.<span class="token punctuation">}</span><span class="token punctuation">]</span>
+</code></pre>
+<h2 id="&#x66F4;&#x65B0;&#x670D;&#x52A1;">&#x66F4;&#x65B0;&#x670D;&#x52A1;</h2>
+<p>&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x53EF;&#x4EE5;&#x66F4;&#x65B0;&#x670D;&#x52A1;&#xFF0C;&#x66F4;&#x65B0;&#x5B8C;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E4B;&#x540E;&#x5411; agent &#x53D1;&#x9001; <code>SIGHUP</code> &#x4FE1;&#x53F7;&#x3002;&#x8FD9;&#x4E48;&#x66F4;&#x65B0;&#x7684;&#x597D;&#x5904;&#x662F;&#x670D;&#x52A1;&#x4E00;&#x76F4;&#x5904;&#x4E8E;&#x53EF;&#x7528;&#x72B6;&#x6001;&#x3002;</p>
+<p>&#x540C;&#x4E8B;&#xFF0C;HTTP API &#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x52A8;&#x6001;&#x589E;&#x52A0;&#x3001;&#x5220;&#x9664;&#x548C;&#x4FEE;&#x6539;&#x670D;&#x52A1;&#x3002;</p>
+<h2 id="&#x4E0B;&#x4E00;&#x6B65;">&#x4E0B;&#x4E00;&#x6B65;</h2>
+<p>&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x53EA;&#x914D;&#x7F6E;&#x4E86;&#x4E00;&#x4E2A; agent&#xFF0C;&#x5E76;&#x4E14;&#x6CE8;&#x518C;&#x4E86;&#x670D;&#x52A1;&#x3002;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x770B;&#x4E00;&#x4E0B;&#x5982;&#x4F55;&#x5EFA;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#x3002;</p>
 
                                 
                                 </section>
@@ -1265,7 +1340,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.4.3 服务","level":"1.2.4.3","depth":3,"next":{"title":"1.4.4 Consul集群","level":"1.2.4.4","depth":3,"path":"document/consul_cluster.md","ref":"document/consul_cluster.md","articles":[]},"previous":{"title":"1.4.2 运行Agent","level":"1.2.4.2","depth":3,"path":"document/run_the_agent.md","ref":"document/run_the_agent.md","articles":[]},"dir":"ltr"},"config":{"plugins":["toggle-chapters","splitter","prism","-highlight","emphasize"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"emphasize":{},"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"consul guide and inside","language":"zh","gitbook":"*","description":"consul is an awesome sofeware for service discovery"},"file":{"path":"document/services.md","mtime":"2016-12-27T15:30:54.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-12-28T14:03:46.369Z"},"basePath":"..","book":{"language":"zh"}});
+            gitbook.page.hasChanged({"page":{"title":"1.4.3 服务","level":"1.2.4.3","depth":3,"next":{"title":"1.4.4 Consul集群","level":"1.2.4.4","depth":3,"path":"document/consul_cluster.md","ref":"document/consul_cluster.md","articles":[]},"previous":{"title":"1.4.2 运行Agent","level":"1.2.4.2","depth":3,"path":"document/run_the_agent.md","ref":"document/run_the_agent.md","articles":[]},"dir":"ltr"},"config":{"plugins":["toggle-chapters","splitter","prism","-highlight","emphasize"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"emphasize":{},"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"consul guide and inside","language":"zh","gitbook":"*","description":"consul is an awesome sofeware for service discovery"},"file":{"path":"document/services.md","mtime":"2017-01-03T14:05:08.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-03T15:37:55.326Z"},"basePath":"..","book":{"language":"zh"}});
         });
     </script>
 </div>
