@@ -397,7 +397,7 @@
                 <a href="../upgrade/">
             
                     
-                    2. Upgrading and Compatibility
+                    2. 升级
             
                 </a>
             
@@ -884,7 +884,7 @@
                 <a href="../agent/running_and_stopping.html">
             
                     
-                    5.1 Running and Stopping
+                    5.1 启动和关闭
             
                 </a>
             
@@ -897,7 +897,7 @@
                 <a href="../agent/dns_interface.html">
             
                     
-                    5.2 DNS Interface
+                    5.2 DNS 接口
             
                 </a>
             
@@ -923,7 +923,7 @@
                 <a href="../agent/configuration.html">
             
                     
-                    5.4 Configuration
+                    5.4 配置
             
                 </a>
             
@@ -936,7 +936,7 @@
                 <a href="../agent/service_definitions.html">
             
                     
-                    5.5 Service Definitions
+                    5.5 服务定义
             
                 </a>
             
@@ -949,7 +949,7 @@
                 <a href="../agent/check_definitions.html">
             
                     
-                    5.6 Check Definitions
+                    5.6 健康检测定义
             
                 </a>
             
@@ -962,7 +962,7 @@
                 <a href="../agent/encryption.html">
             
                     
-                    5.7 Encryption
+                    5.7 网络传输加密
             
                 </a>
             
@@ -975,7 +975,7 @@
                 <a href="../agent/rpc_protocol.html">
             
                     
-                    5.8 RPC Protocol
+                    5.8 RPC 协议
             
                 </a>
             
@@ -988,7 +988,7 @@
                 <a href="../agent/telemetry.html">
             
                     
-                    5.9 Telemetry
+                    5.9 信息检测
             
                 </a>
             
@@ -1046,7 +1046,7 @@
                 <a href="../guides/add_remove_servers.html">
             
                     
-                    6.2 Adding/Removing Servers
+                    6.2 添加/删除 Servers
             
                 </a>
             
@@ -1222,6 +1222,24 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="43-event">4.3 event</h1>
+<p>&#x547D;&#x4EE4;&#xFF1A;<code>consul event</code></p>
+<p><code>event</code> &#x547D;&#x4EE4;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x5C06;&#x67D0;&#x4E00;&#x79CD; event &#x5E94;&#x7528;&#x5230;&#x6574;&#x4E2A;&#x6570;&#x636E;&#x4E2D;&#x5FC3;&#x7684;&#x673A;&#x5236;&#x3002;&#x5BF9;&#x4E8E; Consul &#x6765;&#x8BF4;&#xFF0C;&#x8FD9;&#x4E9B; event &#x662F;&#x672A;&#x77E5;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x505A;&#x81EA;&#x52A8;&#x5316;&#x90E8;&#x7F72;&#x3001;&#x91CD;&#x542F;&#x670D;&#x52A1;&#x7B49;&#x3002;event &#x53EF;&#x4EE5;&#x901A;&#x8FC7; <a href="watch.html">watch</a> &#x6765;&#x5904;&#x7406;&#x3002;</p>
+<p>event &#x901A;&#x8FC7; gossip &#x534F;&#x8BAE;&#x4F20;&#x64AD;&#x3002;</p>
+<p>&#x5C3D;&#x7BA1;&#x8FD9;&#x4E9B;&#x7EC6;&#x8282;&#x5BF9;&#x4E8E;&#x4F7F;&#x7528; event &#x6CA1;&#x6709;&#x5F71;&#x54CD;&#xFF0C;&#x4F46;&#x662F;&#x7406;&#x89E3;&#x5176;&#x539F;&#x7406;&#x8FD8;&#x662F;&#x6709;&#x70B9;&#x7528;&#x7684;&#x3002;gossip &#x5C42;&#x9762;&#x4F1A;&#x5C3D;&#x529B;&#x4F20;&#x9012; event&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x4E0D;<strong>&#x4FDD;&#x8BC1;&#x4EA4;&#x4ED8;</strong>&#x3002;&#x4E0D;&#x50CF;&#x5927;&#x90E8;&#x5206; Consul &#x6570;&#x636E;&#x901A;&#x8FC7;&#x5F3A;&#x4E00;&#x81F4;&#x6027;&#x534F;&#x8BAE;&#x8FDB;&#x884C;&#x590D;&#x5236;&#xFF0C;event &#x6570;&#x636E;&#x662F;&#x901A;&#x8FC7; gossip &#x8FDB;&#x884C;&#x7684; p2p &#x4F20;&#x9012;&#x3002;&#x8FD9;&#x4E5F;&#x5C31;&#x610F;&#x5473;&#x7740;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x4E0D;&#x4F1A;&#x8FDB;&#x884C;&#x6301;&#x4E45;&#x5316;&#x4E5F;&#x4E0D;&#x4FDD;&#x8BC1;&#x987A;&#x5E8F;&#x3002;&#x7136;&#x800C;&#x8FD9;&#x4E48;&#x505A;&#x7684;&#x597D;&#x5904;&#x5728;&#x4E8E;&#x5C31;&#x7B97;&#x6CA1;&#x6709; server &#x8282;&#x70B9;&#x6216;&#x8005;&#x8282;&#x70B9;&#x6545;&#x969C;&#xFF0C;event &#x8FD8;&#x662F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x3002;</p>
+<p>gossip &#x534F;&#x8BAE;&#x9650;&#x5236;&#x4E86;&#x7528;&#x6237; event &#x6570;&#x636E;&#x5927;&#x5C0F;&#xFF0C;&#x4F46;&#x662F;&#x5F88;&#x96BE;&#x7ED9;&#x51FA;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x7684;&#x503C;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4F9D;&#x8D56;&#x4E8E;&#x5404;&#x79CD;&#x5404;&#x6837;&#x7684;&#x53C2;&#x6570;&#x3002;&#x53EF;&#x4EE5;&#x80AF;&#x5B9A;&#x7684;&#x662F;&#xFF0C;event &#x7684;&#x6709;&#x6548;&#x8D1F;&#x8F7D;&#x5E94;&#x8BE5;&#x4FDD;&#x8BC1;&#x975E;&#x5E38;&#x5C0F;&#xFF08;&lt; 100 bytes&#xFF09;&#xFF0C;event &#x8FC7;&#x5927;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x3002;</p>
+<h2 id="&#x7528;&#x6CD5;">&#x7528;&#x6CD5;</h2>
+<p>&#x7528;&#x6CD5;&#xFF1A;<code>consul event [options] [payload]</code></p>
+<p>&#x5BF9;&#x4E8E; option&#xFF0C;&#x5FC5;&#x586B;&#x7684;&#x53C2;&#x6570;&#x662F; <code>-name</code>&#xFF0C;&#x6307;&#x5B9A; event &#x7684;&#x540D;&#x5B57;&#x3002;payload &#x53C2;&#x6570;&#x53EF;&#x9009;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x53EF;&#x7528;&#x7684;&#x53C2;&#x6570;&#xFF1A;</p>
+<ul>
+<li><code>-http-addr</code>: &#x4F60;&#x60F3;&#x8981;&#x5C06;&#x547D;&#x4EE4;&#x53D1;&#x9001;&#x7ED9;&#x7684; agent &#x7684; HTTP server &#x5730;&#x5740;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#xFF0C;&#x5C06;&#x4F7F;&#x7528; <code>127.0.0.1:8500</code>&#xFF0C;&#x4E5F;&#x5C31;&#x662F; Consul agent &#x7684;&#x9ED8;&#x8BA4; HTTP &#x5730;&#x5740;&#x3002;</li>
+<li><code>-datacenter</code>: &#x67E5;&#x8BE2;&#x7684;dc&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;&#x5F53;&#x524D; agent &#x6240;&#x5728;&#x7684;dc&#x3002;</li>
+<li><code>-name</code>: event &#x7684;&#x540D;&#x5B57;&#x3002;</li>
+<li><code>-node</code>: &#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x7528;&#x6765;&#x8FC7;&#x6EE4;&#x6267;&#x884C;&#x6B64; event &#x7684;&#x8282;&#x70B9;&#x3002;</li>
+<li><code>-service</code>: &#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x7528;&#x6765;&#x8FC7;&#x6EE4;&#x7279;&#x5B9A;&#x7684;&#x670D;&#x52A1;&#x3002;</li>
+<li><code>-tag</code>: &#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x7528;&#x6765;&#x8FC7;&#x6EE4;&#x7279;&#x5B9A;&#x7684; tag&#x3002;&#x5FC5;&#x987B;&#x548C; <code>-service</code> &#x4E00;&#x8D77;&#x4F7F;&#x7528;&#xFF0C;&#x6BD4;&#x5982; <code>-service mysql -tag secondary</code>&#x3002;</li>
+<li><code>-token</code>: &#x5F53;&#x5E94;&#x7528; event &#x65F6;&#x7684; ACL token&#x3002;token &#x5FC5;&#x987B;&#x8981;&#x6307;&#x5B9A; event &#x7684;&#x5199;&#x6743;&#x9650;&#x3002;</li>
+</ul>
 
                                 
                                 </section>
@@ -1265,7 +1283,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.3 event","level":"1.5.3","depth":2,"next":{"title":"4.4 exec","level":"1.5.4","depth":2,"path":"commands/exec.md","ref":"commands/exec.md","articles":[]},"previous":{"title":"4.2 configtest","level":"1.5.2","depth":2,"path":"commands/configtest.md","ref":"commands/configtest.md","articles":[]},"dir":"ltr"},"config":{"plugins":["toggle-chapters","splitter","prism","-highlight","emphasize"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"emphasize":{},"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"consul guide and inside","language":"zh","gitbook":"*","description":"consul is an awesome sofeware for service discovery"},"file":{"path":"commands/event.md","mtime":"2017-01-04T13:35:00.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-04T13:54:29.197Z"},"basePath":"..","book":{"language":"zh"}});
+            gitbook.page.hasChanged({"page":{"title":"4.3 event","level":"1.5.3","depth":2,"next":{"title":"4.4 exec","level":"1.5.4","depth":2,"path":"commands/exec.md","ref":"commands/exec.md","articles":[]},"previous":{"title":"4.2 configtest","level":"1.5.2","depth":2,"path":"commands/configtest.md","ref":"commands/configtest.md","articles":[]},"dir":"ltr"},"config":{"plugins":["toggle-chapters","splitter","prism","-highlight","emphasize"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"emphasize":{},"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"consul guide and inside","language":"zh","gitbook":"*","description":"consul is an awesome sofeware for service discovery"},"file":{"path":"commands/event.md","mtime":"2017-01-05T14:44:43.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-05T14:45:33.356Z"},"basePath":"..","book":{"language":"zh"}});
         });
     </script>
 </div>

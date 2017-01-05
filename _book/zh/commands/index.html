@@ -397,7 +397,7 @@
                 <a href="../upgrade/">
             
                     
-                    2. Upgrading and Compatibility
+                    2. 升级
             
                 </a>
             
@@ -884,7 +884,7 @@
                 <a href="../agent/running_and_stopping.html">
             
                     
-                    5.1 Running and Stopping
+                    5.1 启动和关闭
             
                 </a>
             
@@ -897,7 +897,7 @@
                 <a href="../agent/dns_interface.html">
             
                     
-                    5.2 DNS Interface
+                    5.2 DNS 接口
             
                 </a>
             
@@ -923,7 +923,7 @@
                 <a href="../agent/configuration.html">
             
                     
-                    5.4 Configuration
+                    5.4 配置
             
                 </a>
             
@@ -936,7 +936,7 @@
                 <a href="../agent/service_definitions.html">
             
                     
-                    5.5 Service Definitions
+                    5.5 服务定义
             
                 </a>
             
@@ -949,7 +949,7 @@
                 <a href="../agent/check_definitions.html">
             
                     
-                    5.6 Check Definitions
+                    5.6 健康检测定义
             
                 </a>
             
@@ -962,7 +962,7 @@
                 <a href="../agent/encryption.html">
             
                     
-                    5.7 Encryption
+                    5.7 网络传输加密
             
                 </a>
             
@@ -975,7 +975,7 @@
                 <a href="../agent/rpc_protocol.html">
             
                     
-                    5.8 RPC Protocol
+                    5.8 RPC 协议
             
                 </a>
             
@@ -988,7 +988,7 @@
                 <a href="../agent/telemetry.html">
             
                     
-                    5.9 Telemetry
+                    5.9 信息检测
             
                 </a>
             
@@ -1046,7 +1046,7 @@
                 <a href="../guides/add_remove_servers.html">
             
                     
-                    6.2 Adding/Removing Servers
+                    6.2 添加/删除 Servers
             
                 </a>
             
@@ -1222,6 +1222,46 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="4-consul-commandscli">4. Consul Commands(CLI)</h1>
+<p>Consul &#x63D0;&#x4F9B;&#x4E86;&#x5F3A;&#x5927;&#x7684; CLI &#x529F;&#x80FD;&#xFF0C;&#x5E76;&#x4E14;&#x975E;&#x5E38;&#x89C4;&#x8303;&#xFF0C;&#x9519;&#x8BEF;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x975E;&#x96F6;&#x7684;&#x9000;&#x51FA;&#x7801;&#x3002;&#x901A;&#x8FC7; <code>-h</code> &#x6216;&#x8005; <code>--help</code> &#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x5E2E;&#x52A9;&#x4FE1;&#x606F;&#x3002;&#x76F4;&#x63A5;&#x5728;&#x7EC8;&#x7AEF;&#x4E2D;&#x8F93;&#x5165; <code>consul</code>&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5B8C;&#x6574;&#x7684;&#x547D;&#x4EE4;&#x5217;&#x8868;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ consul
+usage: consul <span class="token punctuation">[</span>--version<span class="token punctuation">]</span> <span class="token punctuation">[</span>--help<span class="token punctuation">]</span> <span class="token operator">&lt;</span>command<span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token operator">&lt;</span>args<span class="token operator">&gt;</span><span class="token punctuation">]</span>
+
+Available commands are:
+    agent          Runs a Consul agent
+    configtest     Validate config <span class="token function">file</span>
+    event          Fire a new event
+    <span class="token function">exec</span>           Executes a <span class="token function">command</span> on Consul nodes
+    force-leave    Forces a member of the cluster to enter the <span class="token string">&quot;left&quot;</span> state
+    info           Provides debugging information <span class="token keyword">for</span> operators
+    <span class="token function">join</span>           Tell Consul agent to <span class="token function">join</span> cluster
+    keygen         Generates a new encryption key
+    keyring        Manages gossip layer encryption keys
+    kv             Interact with the key-value store
+    leave          Gracefully leaves the Consul cluster and shuts down
+    lock           Execute a <span class="token function">command</span> holding a lock
+    maint          Controls node or <span class="token function">service</span> maintenance mode
+    members        Lists the members of a Consul cluster
+    monitor        Stream logs from a Consul agent
+    operator       Provides cluster-level tools <span class="token keyword">for</span> Consul operators
+    reload         Triggers the agent to reload configuration files
+    rtt            Estimates network round trip <span class="token function">time</span> between nodes
+    version        Prints the Consul version
+    <span class="token function">watch</span>          Watch <span class="token keyword">for</span> changes <span class="token keyword">in</span> Consul
+</code></pre>
+<p>&#x5982;&#x679C;&#x60F3;&#x4E86;&#x89E3;&#x67D0;&#x4E2A;&#x547D;&#x4EE4;&#x7684;&#x5E2E;&#x52A9;&#x4FE1;&#x606F;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x8F93;&#x5165;&#x53C2;&#x6570; <code>-h</code> &#x5373;&#x53EF;&#x3002;&#x6BD4;&#x5982;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ consul <span class="token function">join</span> -h
+Usage: consul <span class="token function">join</span> <span class="token punctuation">[</span>options<span class="token punctuation">]</span> address <span class="token punctuation">..</span>.
+
+  Tells a running Consul agent <span class="token punctuation">(</span>with <span class="token string">&quot;consul agent&quot;</span><span class="token punctuation">)</span> to <span class="token function">join</span> the cluster
+  by specifying at least one existing member.
+
+Options:
+
+  -rpc-addr<span class="token operator">=</span>127.0.0.1:8400  Address to the RPC server of the agent you want to contact
+                            to send this command. If this isn&apos;t specified, the <span class="token function">command</span> checks the
+                            CONSUL_RPC_ADDR <span class="token function">env</span> variable.
+  -wan                      Joins a server to another server <span class="token keyword">in</span> the WAN pool
+</code></pre>
 
                                 
                                 </section>
@@ -1265,7 +1305,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4. Consul Commands(CLI)","level":"1.5","depth":1,"next":{"title":"4.1 agent","level":"1.5.1","depth":2,"path":"commands/agent.md","ref":"commands/agent.md","articles":[]},"previous":{"title":"3.9 Jepsen Testing","level":"1.4.9","depth":2,"path":"internal/jepsen_testing.md","ref":"internal/jepsen_testing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["toggle-chapters","splitter","prism","-highlight","emphasize"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"emphasize":{},"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"consul guide and inside","language":"zh","gitbook":"*","description":"consul is an awesome sofeware for service discovery"},"file":{"path":"commands/README.md","mtime":"2017-01-04T13:35:00.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-04T13:54:29.197Z"},"basePath":"..","book":{"language":"zh"}});
+            gitbook.page.hasChanged({"page":{"title":"4. Consul Commands(CLI)","level":"1.5","depth":1,"next":{"title":"4.1 agent","level":"1.5.1","depth":2,"path":"commands/agent.md","ref":"commands/agent.md","articles":[]},"previous":{"title":"3.9 Jepsen Testing","level":"1.4.9","depth":2,"path":"internal/jepsen_testing.md","ref":"internal/jepsen_testing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["toggle-chapters","splitter","prism","-highlight","emphasize"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"emphasize":{},"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"consul guide and inside","language":"zh","gitbook":"*","description":"consul is an awesome sofeware for service discovery"},"file":{"path":"commands/README.md","mtime":"2017-01-05T13:24:29.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-05T14:45:33.356Z"},"basePath":"..","book":{"language":"zh"}});
         });
     </script>
 </div>
