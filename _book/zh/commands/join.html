@@ -591,7 +591,7 @@
                 <a href="./">
             
                     
-                    4. Consul Commands(CLI)
+                    4. Consul 命令(CLI)
             
                 </a>
             
@@ -1222,6 +1222,20 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="46-join">4.6 join</h1>
+<p>&#x547D;&#x4EE4;&#xFF1A;<code>consul join</code>&#x3002;</p>
+<p>Consul agent &#x901A;&#x8FC7;&#x547D;&#x4EE4; <code>join</code> &#x52A0;&#x5165;&#x5230;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#x4E2D;&#x3002;&#x4E00;&#x4E2A;&#x65B0;&#x7684; Consul agent &#x5FC5;&#x987B;&#x52A0;&#x5165;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#x7684;&#x67D0;&#x4E2A;&#x6210;&#x5458;&#x624D;&#x80FD;&#x52A0;&#x5165;&#x5230;&#x96C6;&#x7FA4;&#x4E2D;&#x3002;&#x52A0;&#x5165;&#x96C6;&#x7FA4;&#x7684;&#x67D0;&#x4E2A;&#x6210;&#x5458;&#x4E4B;&#x540E;&#xFF0C;&#x7136;&#x540E;&#x96C6;&#x7FA4;&#x4E2D;&#x901A;&#x8FC7; gossip &#x534F;&#x8BAE;&#x6269;&#x6563;&#x5E76;&#x66F4;&#x65B0;&#x96C6;&#x7FA4;&#x6210;&#x5458;&#x5173;&#x7CFB;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x6CA1;&#x6709;&#x52A0;&#x5165;&#x67D0;&#x4E2A;&#x96C6;&#x7FA4;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A; agent &#x5219;&#x81EA;&#x5DF1;&#x6210;&#x4E3A;&#x4E00;&#x4E2A;&#x5B64;&#x7ACB;&#x7684;&#x96C6;&#x7FA4;&#xFF0C;&#x522B;&#x7684;&#x8282;&#x70B9;&#x53EF;&#x4EE5;&#x52A0;&#x5165;&#x5B83;&#x3002;</p>
+<p>agent &#x53EF;&#x4EE5;&#x591A;&#x6B21;&#x52A0;&#x5165;&#x5176;&#x4ED6;&#x7684; agent&#x3002;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#x7684;&#x8282;&#x70B9;&#x52A0;&#x5165;&#x53E6;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#x7684;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x5219;&#x8FD9;&#x4E24;&#x4E2A;&#x96C6;&#x7FA4;&#x5408;&#x5E76;&#x4E3A;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#x3002;</p>
+<h2 id="&#x7528;&#x6CD5;">&#x7528;&#x6CD5;</h2>
+<p>&#x7528;&#x6CD5;&#xFF1A;<code>consul join [optoins] address ...</code></p>
+<p>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x52A0;&#x5165;&#x591A;&#x4E2A;&#x96C6;&#x7FA4;&#xFF0C;&#x53EF;&#x4EE5;&#x5728; join &#x540E;&#x9762;&#x63A5;&#x591A;&#x4E2A;&#x5730;&#x5740;&#x3002;Consul &#x4F1A;&#x5C1D;&#x8BD5;&#x52A0;&#x5165;&#x6240;&#x6709;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x5982;&#x679C;&#x67D0;&#x4E2A;&#x5730;&#x5740;&#x4E0D;&#x80FD;&#x52A0;&#x5165;&#xFF0C;&#x5219; join &#x547D;&#x4EE4;&#x5931;&#x8D25;&#x3002;</p>
+<p>join &#x547D;&#x4EE4;&#x7684;&#x53C2;&#x6570;&#x90FD;&#x662F;&#x53EF;&#x9009;&#x7684;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x53EF;&#x7528;&#x7684;&#x53C2;&#x6570;&#x3002;</p>
+<ul>
+<li><p><code>-wan:</code> &#x5BF9;&#x4E8E;&#x8FD0;&#x884C;&#x5728; server &#x6A21;&#x5F0F;&#x7684; agent&#xFF0C;&#x5B83;&#x4F1A;&#x5C1D;&#x8BD5;&#x52A0;&#x5165;&#x5176;&#x5B83;&#x5728;&#x4E00;&#x4E2A; WAN &#x96C6;&#x7FA4;&#x7684; server&#x3002;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x5728;&#x591A;&#x4E2A; datacenter &#x4E4B;&#x95F4;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A; bridge&#x3002;</p>
+</li>
+<li><p><code>-rpc-addr:</code> &#x6307;&#x5B9A;&#x4F60;&#x60F3;&#x8981;&#x53D1;&#x9001;&#x547D;&#x4EE4;&#x7684; node &#x7684; RPC &#x5730;&#x5740;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x6307;&#x5B9A;&#xFF0C;&#x5219;&#x4F1A;&#x68C0;&#x6D4B;&#x73AF;&#x5883;&#x53D8;&#x91CF; <code>CONSUL_RPC_ADDR</code>&#x3002;&#x5982;&#x679C;&#x53D8;&#x91CF;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&#xFF0C;&#x9ED8;&#x8BA4;&#x7684; RPC &#x5730;&#x5740;&#x662F; <code>127.0.0.1:8400</code>&#x3002;</p>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -1265,7 +1279,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.6 join","level":"1.5.6","depth":2,"next":{"title":"4.7 keygen","level":"1.5.7","depth":2,"path":"commands/keygen.md","ref":"commands/keygen.md","articles":[]},"previous":{"title":"4.5 force-leave","level":"1.5.5","depth":2,"path":"commands/force_leave.md","ref":"commands/force_leave.md","articles":[]},"dir":"ltr"},"config":{"plugins":["toggle-chapters","splitter","prism","-highlight","emphasize"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"emphasize":{},"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"consul guide and inside","language":"zh","gitbook":"*","description":"consul is an awesome sofeware for service discovery"},"file":{"path":"commands/join.md","mtime":"2017-01-04T14:54:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-05T14:45:33.356Z"},"basePath":"..","book":{"language":"zh"}});
+            gitbook.page.hasChanged({"page":{"title":"4.6 join","level":"1.5.6","depth":2,"next":{"title":"4.7 keygen","level":"1.5.7","depth":2,"path":"commands/keygen.md","ref":"commands/keygen.md","articles":[]},"previous":{"title":"4.5 force-leave","level":"1.5.5","depth":2,"path":"commands/force_leave.md","ref":"commands/force_leave.md","articles":[]},"dir":"ltr"},"config":{"plugins":["toggle-chapters","splitter","prism","-highlight","emphasize"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"emphasize":{},"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"consul guide and inside","language":"zh","gitbook":"*","description":"consul is an awesome sofeware for service discovery"},"file":{"path":"commands/join.md","mtime":"2017-01-24T02:52:10.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-24T07:11:31.127Z"},"basePath":"..","book":{"language":"zh"}});
         });
     </script>
 </div>

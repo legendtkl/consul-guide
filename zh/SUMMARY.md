@@ -35,7 +35,7 @@
     * [3.7 Anti-Entropy](internal/anti_entropy.md)
     * [3.8 Security Model](internal/security_model.md)
     * [3.9 Jepsen Testing](internal/jepsen_testing.md)
-* [4. Consul Commands(CLI)](commands/README.md)
+* [4. Consul 命令(CLI)](commands/README.md)
     * [4.1 agent](commands/agent.md)
     * [4.2 configtest](commands/configtest.md)
     * [4.3 event](commands/event.md)
